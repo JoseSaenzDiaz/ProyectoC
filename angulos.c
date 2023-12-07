@@ -1,3 +1,8 @@
+// José Ignacio Sáenz C27032
+// Santiago Herra C13721
+// Danna Guevara C23562
+// Este programa funciona para calcular los angulos internos de polionos y ademas determinar si son convexos.
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
