@@ -5,13 +5,10 @@
 typedef struct {
     double x, y;
 } Vertice;
-
-// Función para calcular el producto cruz entre dos vectores
 double prodcruz(Vertice a, Vertice b) {
     return a.x * b.y - a.y * b.x;
 }
 
-// Función para calcular el ángulo entre dos vectores en radianes
 double angentrevectores(Vertice a, Vertice b) {
     double prodvertices = a.x * b.x + a.y * b.y;
     double magnitudA = sqrt(a.x * a.x + a.y * a.y);
@@ -20,7 +17,6 @@ double angentrevectores(Vertice a, Vertice b) {
     return acos(prodvertices / (magnitudA * magnitudB));
 }
 
-// Función para ordenar los vértices en sentido antihorario
 int ordenvertices(const void *a, const void *b) {
     Vertice verticeA = *(Vertice *)a;
     Vertice verticeB = *(Vertice *)b;
@@ -39,11 +35,9 @@ void centro(Vertice *vertices, int numVertices) {
     centropol.x /= numVertices;
     centropol.y /= numVertices;
 
-    // Ordenar los vértices basándose en el ángulo polar con respecto al centroide
     qsort(vertices, numVertices, sizeof(Vertice), ordenvertices);
 }
 
-// Función para determinar si el polígono es convexo o cóncavo
 int convexidad(Vertice *vertices, int numVertices) {
     int signo = 0;
     for (int i = 0; i < numVertices; ++i) {
