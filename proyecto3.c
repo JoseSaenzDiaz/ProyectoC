@@ -7,13 +7,18 @@ El programa asigna de forma dinámica memoria para la creación de una matriz.
 */
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
+#include <ctype.h>
 
-int esEntero(const char* string) { // Funcion que revisa si una entrada es enter
-    char prueba;
-    return sscanf(string, "%d%c", &prueba, &prueba) == 1;
+bool esEntero(const char* string) { // Funcion que revisa si una entrada es entera
+    while (*string) {
+        if (!isdigit(*string)) { // Revisa que la entrada este compuesta de digitos
+            return false;
+        }
+        string++;
+    }
+    return true;
 }
-
-
 // Se define el tipo de estructura matriz
 typedef struct {
     int** matriz; // puntero a un puntero
@@ -47,7 +52,7 @@ int definirMatriz(InfoDeMatriz* matrizInfo) {
             char entrada[20];  // Tamaño arbitrario para revisar si la entrada es entera
             int valor; // Valor de la entrada
             printf("Entrada [%d][%d]: ", i, j);
-            scanf("%s", &entrada);
+            scanf("%s", entrada);
             if (!esEntero(entrada)) { // Revisar que sea entero y no flotante o char
                 printf("El valor ingresado no es entero.\n"); // Declara el error
                 return -1;
